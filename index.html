@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B1-B2 Sales Team Leader Flashcards</title>
+    <title>Sales Team Leader Flashcards</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             margin: 0;
             padding: 20px;
@@ -15,25 +15,16 @@
             flex-direction: column;
             align-items: center;
         }
-
         .header {
             text-align: center;
             margin-bottom: 30px;
             color: white;
         }
-
         .header h1 {
             margin: 0;
             font-size: 2.3em;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-
-        .header p {
-            margin: 10px 0;
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-
         .level-badge {
             display: inline-block;
             background: #FF6B35;
@@ -42,9 +33,8 @@
             border-radius: 15px;
             font-size: 0.9em;
             font-weight: bold;
-            margin-top: 5px;
+            margin-top: 10px;
         }
-
         .controls {
             display: flex;
             gap: 15px;
@@ -52,20 +42,17 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-
         .control-group {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 5px;
         }
-
         .control-group label {
             color: white;
             font-weight: bold;
             font-size: 0.9em;
         }
-
         .btn {
             background: white;
             color: #1e3c72;
@@ -78,18 +65,15 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
             background: #f0f0f0;
         }
-
         .btn.active {
             background: #FF6B35;
             color: white;
         }
-
         select {
             background: white;
             border: 2px solid #ddd;
@@ -99,7 +83,6 @@
             cursor: pointer;
             outline: none;
         }
-
         .progress-bar {
             width: 100%;
             max-width: 500px;
@@ -109,7 +92,6 @@
             margin-bottom: 30px;
             overflow: hidden;
         }
-
         .progress-fill {
             height: 100%;
             background: #FF6B35;
@@ -117,12 +99,10 @@
             transition: width 0.3s ease;
             width: 0%;
         }
-
         .card-container {
             perspective: 1000px;
             margin-bottom: 30px;
         }
-
         .flashcard {
             width: 400px;
             height: 280px;
@@ -132,11 +112,9 @@
             cursor: pointer;
             margin: 0 auto;
         }
-
         .flashcard.flipped {
             transform: rotateY(180deg);
         }
-
         .card-face {
             position: absolute;
             width: 100%;
@@ -152,18 +130,15 @@
             box-sizing: border-box;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-
         .card-front {
             background: linear-gradient(145deg, #ffffff, #f0f0f0);
             color: #333;
         }
-
         .card-back {
             background: linear-gradient(145deg, #FF6B35, #e55a2b);
             color: white;
             transform: rotateY(180deg);
         }
-
         .card-word {
             font-size: 2.2em;
             font-weight: bold;
@@ -171,7 +146,6 @@
             word-wrap: break-word;
             line-height: 1.2;
         }
-
         .card-category {
             font-size: 0.85em;
             opacity: 0.7;
@@ -182,7 +156,6 @@
             padding: 4px 12px;
             border-radius: 12px;
         }
-
         .card-example {
             font-size: 0.95em;
             opacity: 0.85;
@@ -191,51 +164,11 @@
             max-width: 320px;
             line-height: 1.3;
         }
-
-        .card-context {
-            font-size: 0.8em;
-            opacity: 0.7;
-            margin-top: 8px;
-            color: #666;
-            background: rgba(0,0,0,0.05);
-            padding: 6px 10px;
-            border-radius: 8px;
-        }
-
-        .card-back .card-context {
-            color: #fff3e0;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .difficulty-indicator {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            display: flex;
-            gap: 3px;
-        }
-
-        .difficulty-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.2);
-        }
-
-        .difficulty-dot.active {
-            background: #FF6B35;
-        }
-
-        .card-back .difficulty-dot.active {
-            background: white;
-        }
-
         .navigation {
             display: flex;
             gap: 20px;
             margin-bottom: 20px;
         }
-
         .nav-btn {
             background: rgba(255,255,255,0.9);
             color: #1e3c72;
@@ -249,19 +182,16 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             min-width: 120px;
         }
-
         .nav-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.3);
             background: white;
         }
-
         .nav-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
         }
-
         .stats {
             display: flex;
             gap: 30px;
@@ -269,49 +199,29 @@
             text-align: center;
             margin-top: 20px;
         }
-
         .stat-item {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-
         .stat-number {
             font-size: 2em;
             font-weight: bold;
             margin-bottom: 5px;
         }
-
         .stat-label {
             font-size: 0.9em;
             opacity: 0.8;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
         @media (max-width: 768px) {
             .flashcard {
                 width: 350px;
                 height: 260px;
             }
-            
             .card-word {
                 font-size: 1.8em;
-            }
-            
-            .controls {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .navigation {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .stats {
-                flex-direction: column;
-                gap: 15px;
             }
         }
     </style>
@@ -327,13 +237,12 @@
         <div class="control-group">
             <label>Focus Area:</label>
             <select id="categoryFilter">
-                <option value="all">All Vocabulary (60)</option>
+                <option value="all">All Vocabulary (50)</option>
                 <option value="leadership">Team Leadership (10)</option>
                 <option value="electronics">Electronics Terms (10)</option>
                 <option value="client_relations">Client Relations (10)</option>
                 <option value="complaints">Handling Complaints (10)</option>
                 <option value="negotiations">Sales & Negotiations (10)</option>
-                <option value="international">International Business (10)</option>
             </select>
         </div>
         
@@ -355,26 +264,14 @@
     <div class="card-container">
         <div class="flashcard" id="flashcard">
             <div class="card-face card-front">
-                <div class="difficulty-indicator" id="difficultyFront">
-                    <div class="difficulty-dot active"></div>
-                    <div class="difficulty-dot"></div>
-                    <div class="difficulty-dot"></div>
-                </div>
                 <div class="card-category" id="cardCategory">Team Leadership</div>
                 <div class="card-word" id="englishWord">delegate</div>
                 <div class="card-example" id="englishExample">"I need to delegate this task to Sarah"</div>
-                <div class="card-context" id="englishContext">Assigning responsibilities to team members</div>
             </div>
             <div class="card-face card-back">
-                <div class="difficulty-indicator" id="difficultyBack">
-                    <div class="difficulty-dot active"></div>
-                    <div class="difficulty-dot"></div>
-                    <div class="difficulty-dot"></div>
-                </div>
                 <div class="card-category">Traduzione</div>
                 <div class="card-word" id="italianWord">delegare</div>
                 <div class="card-example" id="italianExample">"Devo delegare questo compito a Sarah"</div>
-                <div class="card-context" id="italianContext">Assigning responsibilities to team members</div>
             </div>
         </div>
     </div>
@@ -392,7 +289,7 @@
             <div class="stat-label">Current</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number" id="totalCards">60</div>
+            <div class="stat-number" id="totalCards">50</div>
             <div class="stat-label">Total</div>
         </div>
         <div class="stat-item">
@@ -404,76 +301,64 @@
     <script>
         const vocabulary = {
             leadership: [
-                {en: 'delegate', it: 'delegare', difficulty: 2, category: 'Team Leadership', example_en: 'I need to delegate this task to Sarah', example_it: 'Devo delegare questo compito a Sarah', context: 'Assigning responsibilities to team members'},
-                {en: 'motivate', it: 'motivare', difficulty: 2, category: 'Team Leadership', example_en: 'How can I motivate my sales team?', example_it: 'Come posso motivare il mio team di vendita?', context: 'Inspiring team performance'},
-                {en: 'supervise', it: 'supervisionare', difficulty: 2, category: 'Team Leadership', example_en: 'I supervise five sales representatives', example_it: 'Supervisiono cinque rappresentanti di vendita', context: 'Overseeing team activities'},
-                {en: 'feedback', it: 'feedback', difficulty: 1, category: 'Team Leadership', example_en: 'Can you give me feedback on my presentation?', example_it: 'Puoi darmi un feedback sulla mia presentazione?', context: 'Performance evaluation'},
-                {en: 'mentor', it: 'fare da mentore', difficulty: 2, category: 'Team Leadership', example_en: 'I mentor new sales reps', example_it: 'Faccio da mentore ai nuovi venditori', context: 'Guiding junior team members'},
-                {en: 'accountability', it: 'responsabilità', difficulty: 3, category: 'Team Leadership', example_en: 'We need more accountability in our team', example_it: 'Abbiamo bisogno di più responsabilità nel nostro team', context: 'Taking ownership of results'},
-                {en: 'initiative', it: 'iniziativa', difficulty: 2, category: 'Team Leadership', example_en: 'Show more initiative in finding new clients', example_it: 'Mostra più iniziativa nel trovare nuovi clienti', context: 'Proactive behavior'},
-                {en: 'collaboration', it: 'collaborazione', difficulty: 2, category: 'Team Leadership', example_en: 'Good collaboration improves our results', example_it: 'Una buona collaborazione migliora i nostri risultati', context: 'Working together effectively'},
-                {en: 'performance', it: 'prestazione', difficulty: 1, category: 'Team Leadership', example_en: 'Your performance this quarter was excellent', example_it: 'La tua prestazione questo trimestre è stata eccellente', context: 'Measuring work quality'},
-                {en: 'objective', it: 'obiettivo', difficulty: 1, category: 'Team Leadership', example_en: 'Our main objective is to increase sales by 20%', example_it: 'Il nostro obiettivo principale è aumentare le vendite del 20%', context: 'Setting goals'}
+                {en: 'delegate', it: 'delegare', category: 'Team Leadership', example_en: 'I need to delegate this task to Sarah', example_it: 'Devo delegare questo compito a Sarah'},
+                {en: 'motivate', it: 'motivare', category: 'Team Leadership', example_en: 'How can I motivate my sales team?', example_it: 'Come posso motivare il mio team di vendita?'},
+                {en: 'supervise', it: 'supervisionare', category: 'Team Leadership', example_en: 'I supervise five sales representatives', example_it: 'Supervisiono cinque rappresentanti di vendita'},
+                {en: 'feedback', it: 'feedback', category: 'Team Leadership', example_en: 'Can you give me feedback on my presentation?', example_it: 'Puoi darmi un feedback sulla mia presentazione?'},
+                {en: 'mentor', it: 'fare da mentore', category: 'Team Leadership', example_en: 'I mentor new sales reps', example_it: 'Faccio da mentore ai nuovi venditori'},
+                {en: 'accountability', it: 'responsabilità', category: 'Team Leadership', example_en: 'We need more accountability in our team', example_it: 'Abbiamo bisogno di più responsabilità nel nostro team'},
+                {en: 'initiative', it: 'iniziativa', category: 'Team Leadership', example_en: 'Show more initiative in finding new clients', example_it: 'Mostra più iniziativa nel trovare nuovi clienti'},
+                {en: 'collaboration', it: 'collaborazione', category: 'Team Leadership', example_en: 'Good collaboration improves our results', example_it: 'Una buona collaborazione migliora i nostri risultati'},
+                {en: 'performance', it: 'prestazione', category: 'Team Leadership', example_en: 'Your performance this quarter was excellent', example_it: 'La tua prestazione questo trimestre è stata eccellente'},
+                {en: 'objective', it: 'obiettivo', category: 'Team Leadership', example_en: 'Our main objective is to increase sales by 20%', example_it: 'Il nostro obiettivo principale è aumentare le vendite del 20%'}
             ],
             electronics: [
-                {en: 'component', it: 'componente', difficulty: 1, category: 'Electronics Terms', example_en: 'This component is essential for the circuit', example_it: 'Questo componente è essenziale per il circuito', context: 'Electronic parts'},
-                {en: 'semiconductor', it: 'semiconduttore', difficulty: 2, category: 'Electronics Terms', example_en: 'We specialize in semiconductor sales', example_it: 'Siamo specializzati nella vendita di semiconduttori', context: 'Electronic materials'},
-                {en: 'specification', it: 'specifica', difficulty: 2, category: 'Electronics Terms', example_en: 'Please check the technical specifications', example_it: 'Per favore controlla le specifiche tecniche', context: 'Technical requirements'},
-                {en: 'compatibility', it: 'compatibilità', difficulty: 2, category: 'Electronics Terms', example_en: 'We need to ensure compatibility with your system', example_it: 'Dobbiamo assicurare la compatibilità con il vostro sistema', context: 'System integration'},
-                {en: 'voltage', it: 'voltaggio', difficulty: 1, category: 'Electronics Terms', example_en: 'What voltage does your device require?', example_it: 'Che voltaggio richiede il vostro dispositivo?', context: 'Electrical measurement'},
-                {en: 'circuitry', it: 'circuito', difficulty: 2, category: 'Electronics Terms', example_en: 'The circuitry is very complex', example_it: 'Il circuito è molto complesso', context: 'Electronic systems'},
-                {en: 'inventory', it: 'inventario', difficulty: 1, category: 'Electronics Terms', example_en: 'We have these components in inventory', example_it: 'Abbiamo questi componenti in inventario', context: 'Stock management'},
-                {en: 'prototype', it: 'prototipo', difficulty: 2, category: 'Electronics Terms', example_en: 'Can you test this with your prototype?', example_it: 'Puoi testarlo con il tuo prototipo?', context: 'Product development'},
-                {en: 'datasheet', it: 'scheda tecnica', difficulty: 1, category: 'Electronics Terms', example_en: 'I will send you the component datasheet', example_it: 'Ti manderò la scheda tecnica del componente', context: 'Technical documentation'},
-                {en: 'reliability', it: 'affidabilità', difficulty: 2, category: 'Electronics Terms', example_en: 'Our components have high reliability ratings', example_it: 'I nostri componenti hanno valutazioni di alta affidabilità', context: 'Product quality'}
+                {en: 'component', it: 'componente', category: 'Electronics Terms', example_en: 'This component is essential for the circuit', example_it: 'Questo componente è essenziale per il circuito'},
+                {en: 'semiconductor', it: 'semiconduttore', category: 'Electronics Terms', example_en: 'We specialize in semiconductor sales', example_it: 'Siamo specializzati nella vendita di semiconduttori'},
+                {en: 'specification', it: 'specifica', category: 'Electronics Terms', example_en: 'Please check the technical specifications', example_it: 'Per favore controlla le specifiche tecniche'},
+                {en: 'compatibility', it: 'compatibilità', category: 'Electronics Terms', example_en: 'We need to ensure compatibility with your system', example_it: 'Dobbiamo assicurare la compatibilità con il vostro sistema'},
+                {en: 'voltage', it: 'voltaggio', category: 'Electronics Terms', example_en: 'What voltage does your device require?', example_it: 'Che voltaggio richiede il vostro dispositivo?'},
+                {en: 'circuitry', it: 'circuito', category: 'Electronics Terms', example_en: 'The circuitry is very complex', example_it: 'Il circuito è molto complesso'},
+                {en: 'inventory', it: 'inventario', category: 'Electronics Terms', example_en: 'We have these components in inventory', example_it: 'Abbiamo questi componenti in inventario'},
+                {en: 'prototype', it: 'prototipo', category: 'Electronics Terms', example_en: 'Can you test this with your prototype?', example_it: 'Puoi testarlo con il tuo prototipo?'},
+                {en: 'datasheet', it: 'scheda tecnica', category: 'Electronics Terms', example_en: 'I will send you the component datasheet', example_it: 'Ti manderò la scheda tecnica del componente'},
+                {en: 'reliability', it: 'affidabilità', category: 'Electronics Terms', example_en: 'Our components have high reliability ratings', example_it: 'I nostri componenti hanno valutazioni di alta affidabilità'}
             ],
             client_relations: [
-                {en: 'rapport', it: 'rapporto', difficulty: 2, category: 'Client Relations', example_en: 'Building rapport with clients is essential', example_it: 'Costruire un rapporto con i clienti è essenziale', context: 'Building relationships'},
-                {en: 'trustworthy', it: 'affidabile', difficulty: 2, category: 'Client Relations', example_en: 'We are a trustworthy supplier', example_it: 'Siamo un fornitore affidabile', context: 'Building confidence'},
-                {en: 'responsive', it: 'reattivo', difficulty: 2, category: 'Client Relations', example_en: 'Our team is very responsive to client needs', example_it: 'Il nostro team è molto reattivo alle esigenze dei clienti', context: 'Quick response'},
-                {en: 'proactive', it: 'proattivo', difficulty: 2, category: 'Client Relations', example_en: 'We take a proactive approach to problem solving', example_it: 'Adottiamo un approccio proattivo alla risoluzione dei problemi', context: 'Taking initiative'},
-                {en: 'expectations', it: 'aspettative', difficulty: 2, category: 'Client Relations', example_en: 'Let us align our expectations', example_it: 'Allineiamo le nostre aspettative', context: 'Managing requirements'},
-                {en: 'satisfaction', it: 'soddisfazione', difficulty: 1, category: 'Client Relations', example_en: 'Customer satisfaction is our priority', example_it: 'La soddisfazione del cliente è la nostra priorità', context: 'Meeting needs'},
-                {en: 'partnership', it: 'partnership', difficulty: 2, category: 'Client Relations', example_en: 'We see this as a strategic partnership', example_it: 'Vediamo questo come una partnership strategica', context: 'Collaborative relationship'},
-                {en: 'transparency', it: 'trasparenza', difficulty: 2, category: 'Client Relations', example_en: 'We believe in complete transparency', example_it: 'Crediamo nella completa trasparenza', context: 'Open communication'},
-                {en: 'commitment', it: 'impegno', difficulty: 2, category: 'Client Relations', example_en: 'Our commitment to quality is unwavering', example_it: 'Il nostro impegno per la qualità è incrollabile', context: 'Dedication to service'},
-                {en: 'consultation', it: 'consulenza', difficulty: 2, category: 'Client Relations', example_en: 'We offer free technical consultation', example_it: 'Offriamo consulenza tecnica gratuita', context: 'Expert advice'}
+                {en: 'rapport', it: 'rapporto', category: 'Client Relations', example_en: 'Building rapport with clients is essential', example_it: 'Costruire un rapporto con i clienti è essenziale'},
+                {en: 'trustworthy', it: 'affidabile', category: 'Client Relations', example_en: 'We are a trustworthy supplier', example_it: 'Siamo un fornitore affidabile'},
+                {en: 'responsive', it: 'reattivo', category: 'Client Relations', example_en: 'Our team is very responsive to client needs', example_it: 'Il nostro team è molto reattivo alle esigenze dei clienti'},
+                {en: 'proactive', it: 'proattivo', category: 'Client Relations', example_en: 'We take a proactive approach to problem solving', example_it: 'Adottiamo un approccio proattivo alla risoluzione dei problemi'},
+                {en: 'expectations', it: 'aspettative', category: 'Client Relations', example_en: 'Let us align our expectations', example_it: 'Allineiamo le nostre aspettative'},
+                {en: 'satisfaction', it: 'soddisfazione', category: 'Client Relations', example_en: 'Customer satisfaction is our priority', example_it: 'La soddisfazione del cliente è la nostra priorità'},
+                {en: 'partnership', it: 'partnership', category: 'Client Relations', example_en: 'We see this as a strategic partnership', example_it: 'Vediamo questo come una partnership strategica'},
+                {en: 'transparency', it: 'trasparenza', category: 'Client Relations', example_en: 'We believe in complete transparency', example_it: 'Crediamo nella completa trasparenza'},
+                {en: 'commitment', it: 'impegno', category: 'Client Relations', example_en: 'Our commitment to quality is unwavering', example_it: 'Il nostro impegno per la qualità è incrollabile'},
+                {en: 'consultation', it: 'consulenza', category: 'Client Relations', example_en: 'We offer free technical consultation', example_it: 'Offriamo consulenza tecnica gratuita'}
             ],
             complaints: [
-                {en: 'apologize', it: 'scusarsi', difficulty: 1, category: 'Handling Complaints', example_en: 'I apologize for the inconvenience', example_it: 'Mi scuso per l\'inconveniente', context: 'Expressing regret'},
-                {en: 'acknowledge', it: 'riconoscere', difficulty: 2, category: 'Handling Complaints', example_en: 'I acknowledge there was an error', example_it: 'Riconosco che c\'è stato un errore', context: 'Accepting responsibility'},
-                {en: 'investigate', it: 'investigare', difficulty: 2, category: 'Handling Complaints', example_en: 'We will investigate this issue immediately', example_it: 'Investigheremo questo problema immediatamente', context: 'Looking into problems'},
-                {en: 'rectify', it: 'correggere', difficulty: 3, category: 'Handling Complaints', example_en: 'We will rectify this situation', example_it: 'Correggeremo questa situazione', context: 'Fixing problems'},
-                {en: 'compensation', it: 'compenso', difficulty: 2, category: 'Handling Complaints', example_en: 'We offer compensation for your loss', example_it: 'Offriamo un compenso per la vostra perdita', context: 'Making amends'},
-                {en: 'resolution', it: 'risoluzione', difficulty: 2, category: 'Handling Complaints', example_en: 'We are working on a resolution', example_it: 'Stiamo lavorando a una risoluzione', context: 'Solving problems'},
-                {en: 'inconvenience', it: 'inconveniente', difficulty: 2, category: 'Handling Complaints', example_en: 'Sorry for any inconvenience caused', example_it: 'Scusate per qualsiasi inconveniente causato', context: 'Trouble or difficulty'},
-                {en: 'replacement', it: 'sostituzione', difficulty: 1, category: 'Handling Complaints', example_en: 'We will send a replacement immediately', example_it: 'Manderemo una sostituzione immediatamente', context: 'New product for faulty one'},
-                {en: 'refund', it: 'rimborso', difficulty: 1, category: 'Handling Complaints', example_en: 'You are eligible for a full refund', example_it: 'Hai diritto a un rimborso completo', context: 'Money back'},
-                {en: 'priority', it: 'priorità', difficulty: 1, category: 'Handling Complaints', example_en: 'This complaint is our top priority', example_it: 'Questo reclamo è la nostra priorità assoluta', context: 'Most important task'}
+                {en: 'apologize', it: 'scusarsi', category: 'Handling Complaints', example_en: 'I apologize for the inconvenience', example_it: 'Mi scuso per l\'inconveniente'},
+                {en: 'acknowledge', it: 'riconoscere', category: 'Handling Complaints', example_en: 'I acknowledge there was an error', example_it: 'Riconosco che c\'è stato un errore'},
+                {en: 'investigate', it: 'investigare', category: 'Handling Complaints', example_en: 'We will investigate this issue immediately', example_it: 'Investigheremo questo problema immediatamente'},
+                {en: 'rectify', it: 'correggere', category: 'Handling Complaints', example_en: 'We will rectify this situation', example_it: 'Correggeremo questa situazione'},
+                {en: 'compensation', it: 'compenso', category: 'Handling Complaints', example_en: 'We offer compensation for your loss', example_it: 'Offriamo un compenso per la vostra perdita'},
+                {en: 'resolution', it: 'risoluzione', category: 'Handling Complaints', example_en: 'We are working on a resolution', example_it: 'Stiamo lavorando a una risoluzione'},
+                {en: 'inconvenience', it: 'inconveniente', category: 'Handling Complaints', example_en: 'Sorry for any inconvenience caused', example_it: 'Scusate per qualsiasi inconveniente causato'},
+                {en: 'replacement', it: 'sostituzione', category: 'Handling Complaints', example_en: 'We will send a replacement immediately', example_it: 'Manderemo una sostituzione immediatamente'},
+                {en: 'refund', it: 'rimborso', category: 'Handling Complaints', example_en: 'You are eligible for a full refund', example_it: 'Hai diritto a un rimborso completo'},
+                {en: 'priority', it: 'priorità', category: 'Handling Complaints', example_en: 'This complaint is our top priority', example_it: 'Questo reclamo è la nostra priorità assoluta'}
             ],
             negotiations: [
-                {en: 'negotiate', it: 'negoziare', difficulty: 2, category: 'Sales & Negotiations', example_en: 'We can negotiate the price', example_it: 'Possiamo negoziare il prezzo', context: 'Discussing terms'},
-                {en: 'compromise', it: 'compromesso', difficulty: 2, category: 'Sales & Negotiations', example_en: 'Let us find a compromise that works for both', example_it: 'Troviamo un compromesso che funzioni per entrambi', context: 'Meeting halfway'},
-                {en: 'proposal', it: 'proposta', difficulty: 2, category: 'Sales & Negotiations', example_en: 'I have a proposal for you', example_it: 'Ho una proposta per te', context: 'Business offer'},
-                {en: 'terms', it: 'termini', difficulty: 1, category: 'Sales & Negotiations', example_en: 'What are your payment terms?', example_it: 'Quali sono i vostri termini di pagamento?', context: 'Contract conditions'},
-                {en: 'deadline', it: 'scadenza', difficulty: 1, category: 'Sales & Negotiations', example_en: 'We need to meet this deadline', example_it: 'Dobbiamo rispettare questa scadenza', context: 'Time limit'},
-                {en: 'volume', it: 'volume', difficulty: 1, category: 'Sales & Negotiations', example_en: 'Higher volume means better pricing', example_it: 'Volume più alto significa prezzi migliori', context: 'Quantity of purchase'},
-                {en: 'discount', it: 'sconto', difficulty: 1, category: 'Sales & Negotiations', example_en: 'I can offer a 10% discount', example_it: 'Posso offrire uno sconto del 10%', context: 'Price reduction'},
-                {en: 'competitive', it: 'competitivo', difficulty: 2, category: 'Sales & Negotiations', example_en: 'Our prices are very competitive', example_it: 'I nostri prezzi sono molto competitivi', context: 'Market comparison'},
-                {en: 'exclusive', it: 'esclusivo', difficulty: 2, category: 'Sales & Negotiations', example_en: 'This is an exclusive offer for you', example_it: 'Questa è un\'offerta esclusiva per voi', context: 'Special deal'},
-                {en: 'flexible', it: 'flessibile', difficulty: 2, category: 'Sales & Negotiations', example_en: 'We can be flexible with the delivery date', example_it: 'Possiamo essere flessibili con la data di consegna', context: 'Adaptable'}
-            ],
-            international: [
-                {en: 'compliance', it: 'conformità', difficulty: 3, category: 'International Business', example_en: 'We ensure full regulatory compliance', example_it: 'Assicuriamo la piena conformità normativa', context: 'Following regulations'},
-                {en: 'customs', it: 'dogana', difficulty: 2, category: 'International Business', example_en: 'Customs clearance takes 2-3 days', example_it: 'Lo sdoganamento richiede 2-3 giorni', context: 'Border procedures'},
-                {en: 'currency', it: 'valuta', difficulty: 1, category: 'International Business', example_en: 'Which currency would you prefer?', example_it: 'Quale valuta preferireste?', context: 'Money type'},
-                {en: 'logistics', it: 'logistica', difficulty: 2, category: 'International Business', example_en: 'Our logistics team handles shipping', example_it: 'Il nostro team di logistica gestisce le spedizioni', context: 'Transportation management'},
-                {en: 'tariff', it: 'tariffa', difficulty: 2, category: 'International Business', example_en: 'There is a 15% import tariff', example_it: 'C\'è una tariffa d\'importazione del 15%', context: 'Import taxes'},
-                {en: 'distribution', it: 'distribuzione', difficulty: 2, category: 'International Business', example_en: 'We have strong distribution networks', example_it: 'Abbiamo reti di distribuzione forti', context: 'Product delivery systems'},
-                {en: 'regulations', it: 'regolamenti', difficulty: 2, category: 'International Business', example_en: 'Local regulations must be followed', example_it: 'I regolamenti locali devono essere seguiti', context: 'Legal requirements'},
-                {en: 'shipment', it: 'spedizione', difficulty: 1, category: 'International Business', example_en: 'Your shipment arrives next week', example_it: 'La vostra spedizione arriva la prossima settimana', context: 'Goods being sent'},
-                {en: 'export', it: 'esportare', difficulty: 1, category: 'International Business', example_en: 'We export to over 50 countries', example_it: 'Esportiamo in oltre 50 paesi', context: 'Sending goods abroad'},
-                {en: 'territory', it: 'territorio', difficulty: 2, category: 'International Business', example_en: 'Which territory are you responsible for?', example_it: 'Di quale territorio sei responsabile?', context: 'Geographic area'}
+                {en: 'negotiate', it: 'negoziare', category: 'Sales & Negotiations', example_en: 'We can negotiate the price', example_it: 'Possiamo negoziare il prezzo'},
+                {en: 'compromise', it: 'compromesso', category: 'Sales & Negotiations', example_en: 'Let us find a compromise that works for both', example_it: 'Troviamo un compromesso che funzioni per entrambi'},
+                {en: 'proposal', it: 'proposta', category: 'Sales & Negotiations', example_en: 'I have a proposal for you', example_it: 'Ho una proposta per te'},
+                {en: 'deadline', it: 'scadenza', category: 'Sales & Negotiations', example_en: 'We need to meet this deadline', example_it: 'Dobbiamo rispettare questa scadenza'},
+                {en: 'volume', it: 'volume', category: 'Sales & Negotiations', example_en: 'Higher volume means better pricing', example_it: 'Volume più alto significa prezzi migliori'},
+                {en: 'discount', it: 'sconto', category: 'Sales & Negotiations', example_en: 'I can offer a 10% discount', example_it: 'Posso offrire uno sconto del 10%'},
+                {en: 'competitive', it: 'competitivo', category: 'Sales & Negotiations', example_en: 'Our prices are very competitive', example_it: 'I nostri prezzi sono molto competitivi'},
+                {en: 'exclusive', it: 'esclusivo', category: 'Sales & Negotiations', example_en: 'This is an exclusive offer for you', example_it: 'Questa è un\'offerta esclusiva per voi'},
+                {en: 'flexible', it: 'flessibile', category: 'Sales & Negotiations', example_en: 'We can be flexible with the delivery date', example_it: 'Possiamo essere flessibili con la data di consegna'},
+                {en: 'customs', it: 'dogana', category: 'Sales & Negotiations', example_en: 'Customs clearance takes 2-3 days', example_it: 'Lo sdoganamento richiede 2-3 giorni'}
             ]
         };
 
@@ -486,32 +371,13 @@
         function initializeCards() {
             const category = document.getElementById('categoryFilter').value;
             if (category === 'all') {
-                currentWords = [
-                    ...vocabulary.leadership,
-                    ...vocabulary.electronics,
-                    ...vocabulary.client_relations,
-                    ...vocabulary.complaints,
-                    ...vocabulary.negotiations,
-                    ...vocabulary.international
-                ];
+                currentWords = [...vocabulary.leadership, ...vocabulary.electronics, ...vocabulary.client_relations, ...vocabulary.complaints, ...vocabulary.negotiations];
             } else {
                 currentWords = vocabulary[category] || [];
             }
             currentIndex = 0;
             updateCard();
             updateStats();
-        }
-
-        function updateDifficulty(difficulty) {
-            const frontDots = document.querySelectorAll('#difficultyFront .difficulty-dot');
-            const backDots = document.querySelectorAll('#difficultyBack .difficulty-dot');
-            
-            frontDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index < difficulty);
-            });
-            backDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index < difficulty);
-            });
         }
 
         function updateCard() {
@@ -522,10 +388,9 @@
             document.getElementById('cardCategory').textContent = word.category;
             document.getElementById('englishWord').textContent = word.en;
             document.getElementById('englishExample').textContent = '"' + word.example_en + '"';
-            document.getElementById('englishContext').textContent = word.context;
             document.getElementById('italianWord').textContent = word.it;
             document.getElementById('italianExample').textContent = '"' + word.example_it + '"';
-                       
+            
             document.getElementById('flashcard').classList.remove('flipped');
             isFlipped = false;
             
