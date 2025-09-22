@@ -525,4 +525,124 @@
             document.getElementById('englishContext').textContent = word.context;
             document.getElementById('italianWord').textContent = word.it;
             document.getElementById('italianExample').textContent = '"' + word.example_it + '"';
-            document.getElementById('italianContext').textContent =
+                       
+            document.getElementById('flashcard').classList.remove('flipped');
+            isFlipped = false;
+            
+            document.getElementById('prevBtn').disabled = currentIndex === 0;
+            document.getElementById('nextBtn').disabled = currentIndex === currentWords.length - 1;
+            
+            if (isAutoFlip) {
+                startAutoFlip();
+            }
+        }
+
+        function updateStats() {
+            document.getElementById('currentCard').textContent = currentIndex + 1;
+            document.getElementById('totalCards').textContent = currentWords.length;
+            const progress = ((currentIndex + 1) / currentWords.length * 100).toFixed(0);
+            document.getElementById('progressPercent').textContent = progress + '%';
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function flipCard() {
+            const flashcard = document.getElementById('flashcard');
+            isFlipped = !isFlipped;
+            flashcard.classList.toggle('flipped');
+            
+            if (autoFlipTimer) {
+                clearTimeout(autoFlipTimer);
+            }
+        }
+
+        function nextCard() {
+            if (currentIndex < currentWords.length - 1) {
+                currentIndex++;
+                updateCard();
+                updateStats();
+            }
+        }
+
+        function prevCard() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCard();
+                updateStats();
+            }
+        }
+
+        function shuffleCards() {
+            for (let i = currentWords.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [currentWords[i], currentWords[j]] = [currentWords[j], currentWords[i]];
+            }
+            currentIndex = 0;
+            updateCard();
+            updateStats();
+        }
+
+        function startAutoFlip() {
+            if (autoFlipTimer) {
+                clearTimeout(autoFlipTimer);
+            }
+            
+            if (isAutoFlip) {
+                autoFlipTimer = setTimeout(() => {
+                    if (!isFlipped) {
+                        flipCard();
+                        autoFlipTimer = setTimeout(() => {
+                            if (currentIndex < currentWords.length - 1) {
+                                nextCard();
+                            } else {
+                                toggleAutoFlip();
+                            }
+                        }, 4000);
+                    }
+                }, 4000);
+            }
+        }
+
+        function toggleAutoFlip() {
+            isAutoFlip = !isAutoFlip;
+            const btn = document.getElementById('autoFlipBtn');
+            
+            if (isAutoFlip) {
+                btn.classList.add('active');
+                btn.textContent = '⏸️ Stop Auto';
+                startAutoFlip();
+            } else {
+                btn.classList.remove('active');
+                btn.textContent = '⏱️ Auto (4s)';
+                if (autoFlipTimer) {
+                    clearTimeout(autoFlipTimer);
+                }
+            }
+        }
+
+        document.getElementById('flashcard').addEventListener('click', flipCard);
+        document.getElementById('nextBtn').addEventListener('click', nextCard);
+        document.getElementById('prevBtn').addEventListener('click', prevCard);
+        document.getElementById('shuffleBtn').addEventListener('click', shuffleCards);
+        document.getElementById('autoFlipBtn').addEventListener('click', toggleAutoFlip);
+        document.getElementById('categoryFilter').addEventListener('change', initializeCards);
+
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowRight':
+                    nextCard();
+                    break;
+                case 'ArrowLeft':
+                    prevCard();
+                    break;
+                case ' ':
+                case 'Enter':
+                    e.preventDefault();
+                    flipCard();
+                    break;
+            }
+        });
+
+        initializeCards();
+    </script>
+</body>
+</html>
